@@ -2,6 +2,7 @@
 #include "bitreader.h"
 #include "cinefileheader.h"
 #include "bitmapinfoheader.h"
+#include "imageoffsets.h"
 #include <iostream>
 #include <fstream>
 #include <assert.h>
@@ -88,6 +89,9 @@ int main() {
 
   BITMAPINFOHEADER bitmapheader(&inputCine, cineheader);
   cout << bitmapheader;
+
+  IMAGEOFFSETS pimage(&inputCine, cineheader);
+
 
 
 

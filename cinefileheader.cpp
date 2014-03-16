@@ -23,7 +23,7 @@ CINEFILEHEADER::CINEFILEHEADER(std::ifstream *input) {
 
 std::ostream& operator<<(std::ostream& os, const CINEFILEHEADER &cineheader) {
   os << "HeaderSize: " << cineheader.getHeadersize() << std::endl;
-  os << "Compression: " << cineheader.getHeadersize() << std::endl;
+  os << "Compression: " << cineheader.getCompression() << std::endl;
   os << "Version: " << cineheader.getVersion() << std::endl;
   os << "First Movie Image: " << cineheader.getFirstMovieImage() << std::endl;
   os << "Total Image Count: " << cineheader.getTotalImageCount() << std::endl;

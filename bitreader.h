@@ -26,6 +26,7 @@ class bitreader {
   TIME64 readTIME64();
   IMFILTER readIMFILTER();
   WBGAIN readWBGAIN();
+  long long readint64();
   //  STRING readSTRING();
   
  private:

@@ -74,6 +74,11 @@ DOUBLE bitreader::readDOUBLE() {
   input->read((char *) &out, sizeof(DOUBLE));
   return out;
 }
+long long bitreader::readint64() {
+  long long out;
+  input->read((char *) &out, sizeof(long long));
+  return out;
+}
 
 TIME64 bitreader::readTIME64() {
   TIME64 out;
