@@ -20,6 +20,9 @@ class bitreader {
   INT readINT();
   FLOAT readFLOAT();
   DOUBLE readDOUBLE();
+  TIME64 readTIME64();
+  IMFILTER readIMFILTER();
+  WBGAIN readWBGAIN();
   //  STRING readSTRING();
   
  private:

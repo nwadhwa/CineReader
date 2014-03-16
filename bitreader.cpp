@@ -3,100 +3,96 @@
 
 BYTE bitreader::readBYTE() 
 {
-  int sz = 1;
-  char buff[sz];
-  input->read(buff, sz);
-  BYTE out = (BYTE) buff[0];
+  BYTE out;
+  input->read((char *) &out, sizeof(BYTE));
   return out;
 }
 
 
 
 CHAR  bitreader::readCHAR() {
-  int sz = 1;
-  char buff[sz];
-  input->read(buff, sz);
-  CHAR out = (CHAR) buff[0];
+  CHAR out;
+  input->read((char *) &out, sizeof(CHAR));
   return out;
 }
 
 WORD  bitreader::readWORD() {
-  int sz = 2;
-  char buff[sz];
-  input->read(buff, sz);
-  WORD out = (WORD) buff[0];
+  WORD out;
+  input->read((char *) &out, sizeof(WORD));
   return out;
 }
 
 INT16 bitreader::readINT16() {
-  int sz = 2;
-  char buff[sz];
-  input->read(buff, sz);
-  INT16 out = (INT16) buff[0];
+  INT16 out;
+  input->read((char *) &out, sizeof(INT16));
   return out;
 }
 
 SHORT bitreader::readSHORT() {
-  int sz = 2;
-  char buff[sz];
-  input->read(buff, sz);
-  SHORT out = (SHORT) buff[0];
+  SHORT out;
+  input->read((char *) &out, sizeof(SHORT));
   return out;
 }
 
 BOOL bitreader::readBOOL() {
-  int sz = 4;
-  char buff[sz];
-  input->read(buff, sz);
-  BOOL out = (BOOL) buff[0];
+  BOOL out;
+  input->read((char *) &out, sizeof(BOOL));
   return out;
 }
 
 DWORD bitreader::readDWORD() {
-  int sz = 4;
-  char buff[sz];
-  input->read(buff, sz);
-  DWORD out = (DWORD) buff[0];
+  DWORD out;
+  input->read((char *) &out, sizeof(DWORD));
   return out;
 }
 
 UINT bitreader::readUINT() {
-  int sz = 4;
-  char buff[sz];
-  input->read(buff, sz);
-  UINT out = (UINT) buff[0];
+  UINT out;
+  input->read((char *) &out, sizeof(UINT));
   return out;
 }
 
 LONG bitreader::readLONG() {
-  int sz = 4;
-  char buff[sz];
-  input->read(buff, sz);
-  LONG out = (LONG) buff[0];
+  LONG out;
+  input->read((char *) &out, sizeof(LONG));
   return out;
 }
 
 INT bitreader::readINT() {
-  int sz = 4;
-  char buff[sz];
-  input->read(buff, sz);
-  INT out = (INT) buff[0];
+  INT out;
+  input->read((char *) &out, sizeof(INT));
   return out;
 }
 
 FLOAT bitreader::readFLOAT() {
-  int sz = 4;
-  char buff[sz];
-  input->read(buff, sz);
-  FLOAT out = (FLOAT) buff[0];
+  FLOAT out;
+  input->read((char *) &out, sizeof(FLOAT));
   return out;
 }
 DOUBLE bitreader::readDOUBLE() {
-  int sz = 8;
-  char buff[sz];
-  input->read(buff, sz);
-  DOUBLE out = (DOUBLE) buff[0];
+  DOUBLE out;
+  input->read((char *) &out, sizeof(DOUBLE));
   return out;
 }
+
+TIME64 bitreader::readTIME64() {
+  TIME64 out;
+  input->read((char *) &out, sizeof(TIME64));
+  return out;
+}
+
+IMFILTER bitreader::readIMFILTER() {
+  IMFILTER out;
+  input->read((char *) &out, sizeof(IMFILTER));
+  return out;
+}
+
+WBGAIN bitreader::readWBGAIN() {
+  WBGAIN out;
+  input->read((char *) &out, sizeof(WBGAIN));
+  return out;
+}
+
+
 
 //STRING readSTRING();
