@@ -2,6 +2,7 @@
 #define __data_h
 
 #include <string>
+#include <iostream>
 
 typedef unsigned char BYTE;
 typedef signed char CHAR;
@@ -24,7 +25,12 @@ class TIME64 {
 
   TIME64() {}
 };
-
+/*
+std::ostream& operator<<(std::ostream& os, TIME64 &dt) {
+  os << dt.Seconds << "," <<  dt.Fractions << std::endl;
+  return os;
+}
+*/
 class IMFILTER { //structure to define a convolution filter
  public:
   INT Dim; //square kernel dimension

@@ -18,7 +18,23 @@ CINEFILEHEADER::CINEFILEHEADER(std::ifstream *input) {
   OffImageHeader = br.readDWORD();
   OffSetup = br.readDWORD();
   OffImageOffsets = br.readDWORD();
-
-
+  TriggerTime = br.readTIME64();
 }
 
+std::ostream& operator<<(std::ostream& os, const CINEFILEHEADER &cineheader) {
+  os << "HeaderSize: " << cineheader.getHeadersize() << std::endl;
+  os << "Compression: " << cineheader.getHeadersize() << std::endl;
+  os << "Version: " << cineheader.getVersion() << std::endl;
+  os << "First Movie Image: " << cineheader.getFirstMovieImage() << std::endl;
+  os << "Total Image Count: " << cineheader.getTotalImageCount() << std::endl;
+  os << "First Image No.: " << cineheader.getFirstImageNo() << std::endl;
+  os << "Image Count: " << cineheader.getImageCount() << std::endl;
+  os << "Off Image Header: " << cineheader.getOffImageHeader() << std::endl;
+  os << "Off Setup: " << cineheader.getOffSetup() << std::endl;
+  os << "Off ImageOffsets: " << cineheader.getOffImageOffsets() << std::endl;
+  //  os << "Trigger Time: " << cineheader.getTriggerTime() << std::endl;
+
+  return os;
+    
+
+}

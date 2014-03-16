@@ -83,8 +83,8 @@ int main() {
   //Test actual cine file
   ifstream inputCine("/home/nwadhwa/Downloads/pipeOrgan04_200FPS.cine", ios::in|ios::binary);
   CINEFILEHEADER cineheader(&inputCine);
-  
-  
+  cout << cineheader;
+
 
 
 

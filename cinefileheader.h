@@ -4,6 +4,7 @@
 #include "data.h"
 #include "bitreader.h"
 #include <fstream>
+#include <iostream>
 #include <exception>
 
 #define CC_RGB 0 // Gray cines
@@ -15,18 +16,18 @@ class CINEFILEHEADER {
  public:
   CINEFILEHEADER(std::ifstream *input); 
 
-  WORD getType() {return Type;}
-  WORD getHeadersize() {return Headersize; }
-  WORD getCompression() {return Compression;}
-  WORD getVersion() {return Version;}
-  LONG getFirstMovieImage() {return FirstMovieImage;}
-  DWORD getTotalImageCount() {return TotalImageCount;}
-  LONG getFirstImageNo() {return FirstImageNo;}
-  DWORD getImageCount() {return ImageCount;}
-  DWORD getOffImageHeader() {return OffImageHeader;}
-  DWORD getOffSetup() {return OffSetup;}
-  DWORD getOffImageOffsets() {return OffImageOffsets;}
-  TIME64 getTriggerTime() {return TriggerTime;}
+  WORD getType() const {return Type;}
+  WORD getHeadersize() const {return Headersize; }
+  WORD getCompression() const  {return Compression;}
+  WORD getVersion() const {return Version;}
+  LONG getFirstMovieImage() const {return FirstMovieImage;}
+  DWORD getTotalImageCount() const {return TotalImageCount;}
+  LONG getFirstImageNo() const {return FirstImageNo;}
+  DWORD getImageCount() const {return ImageCount;}
+  DWORD getOffImageHeader() const {return OffImageHeader;}
+  DWORD getOffSetup() const {return OffSetup;}
+  DWORD getOffImageOffsets() const {return OffImageOffsets;}
+  TIME64 getTriggerTime() const {return TriggerTime;}
 
 
 
@@ -45,6 +46,10 @@ class CINEFILEHEADER {
   TIME64 TriggerTime; // Trigger Time
   
 };
+
+
+std::ostream& operator<<(std::ostream& os, const CINEFILEHEADER &cineheader);
+
 
 class exceptionNotCine : public std::exception {
   virtual const char * what() const throw() 
