@@ -2,13 +2,13 @@
 #define __bitreader_h
 
 #include "data.h"
-
+#include <fstream>
 
 class bitreader {
  public:
-  bitreader(char *data);
+  bitreader(std::ifstream *in) { input = in; }
   ~bitreader() {}
-  BYTE  readBYTE();
+  BYTE  readBYTE();  
   CHAR  readCHAR();
   WORD  readWORD();
   INT16 readINT16();
@@ -20,9 +20,10 @@ class bitreader {
   INT readINT();
   FLOAT readFLOAT();
   DOUBLE readDOUBLE();
-  STRING readSTRING();
-
+  //  STRING readSTRING();
+  
  private:
-  int position = 0;
+  std::ifstream *input;
 
 };
+#endif

@@ -1,5 +1,7 @@
 #include "data.h"
+#include "bitreader.h"
 #include <iostream>
+#include <fstream>
 #include <assert.h>
 
 using namespace std;
@@ -37,6 +39,24 @@ int main() {
 
   cout << "All primitive data types are the correct size." << endl;
   
+  // Now testing if bitreader works
+  //  ifstream input("/home/nwadhwa/Downloads/pipeOrgan04_200FPS.cine", ios::in|ios::binary);
+  ifstream input("testfile.dat", ios::in|ios::binary);
+  bitreader br(&input);
+  
+  m_byte = br.readBYTE(); assert(m_byte == 84); 
+  m_char = br.readCHAR(); assert(m_char == 104); 
+  m_word = bt.readWORD(); assert(m_word == 29545);
+  m_int16 = br.readINT16(); assert(m_int16 == 26912);
+  m_short = br.readSHORT(); assert(m_short == 8307);
+  m_bool = br.readBool(); 
+
+  cout << "All data input tests passed." << endl;
+
+
+
+
+
 
 
 }
