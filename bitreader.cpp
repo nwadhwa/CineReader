@@ -94,5 +94,10 @@ WBGAIN bitreader::readWBGAIN() {
 }
 
 
+bitreader::seekToByte() {
+  input->seekg(g);
+}
+
+
 
 //STRING readSTRING();
