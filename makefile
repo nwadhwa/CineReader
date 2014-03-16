@@ -1,5 +1,8 @@
 CC=g++
 
+bitmapinfoheader.o: bitmapinfoheader.cpp bitmapinfoheader.h data.h 
+	$(CC) -c bitmapinfoheader.cpp 
+
 cinefileheader.o: cinefileheader.cpp cinefileheader.h data.h 
 	$(CC) -c cinefileheader.cpp 
 
