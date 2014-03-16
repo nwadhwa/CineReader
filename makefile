@@ -9,8 +9,8 @@ cinefileheader.o: cinefileheader.cpp cinefileheader.h data.h
 bitreader.o: bitreader.cpp bitreader.h data.h
 	$(CC) -c bitreader.cpp 
 
-test: test.cpp data.h bitreader.o cinefileheader.o
-	$(CC) bitreader.o cinefileheader.o test.cpp -o test
+test: test.cpp data.h bitreader.o cinefileheader.o bitmapinfoheader.o
+	$(CC) bitreader.o cinefileheader.o bitmapinfoheader.o test.cpp -o test
 
 run: test
 	./test

@@ -2,8 +2,8 @@
 #define __bigmapinfoheader_h
 
 #include "data.h"
-#include "biteader.h"
-#include "cinefilehader.h"
+#include "bitreader.h"
+#include "cinefileheader.h"
 #include <fstream>
 #include <iostream>
 

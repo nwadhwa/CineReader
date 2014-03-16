@@ -1,6 +1,7 @@
 #include "data.h"
 #include "bitreader.h"
 #include "cinefileheader.h"
+#include "bitmapinfoheader.h"
 #include <iostream>
 #include <fstream>
 #include <assert.h>
@@ -84,6 +85,9 @@ int main() {
   ifstream inputCine("/home/nwadhwa/Downloads/pipeOrgan04_200FPS.cine", ios::in|ios::binary);
   CINEFILEHEADER cineheader(&inputCine);
   cout << cineheader;
+
+  BITMAPINFOHEADER bitmapheader(&inputCine, cineheader);
+  cout << bitmapheader;
 
 
 

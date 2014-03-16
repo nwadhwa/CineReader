@@ -94,7 +94,7 @@ WBGAIN bitreader::readWBGAIN() {
 }
 
 
-bitreader::seekToByte() {
+void bitreader::seekToByte(long g) {
   input->seekg(g);
 }
 
