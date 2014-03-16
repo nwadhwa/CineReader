@@ -2,6 +2,9 @@
 #define __cinefileheader_h
 
 #include "data.h"
+#include "bitreader.h"
+#include <fstream>
+#include <exception>
 
 #define CC_RGB 0 // Gray cines
 #define CC_JPEG 1 // Jpeg compressed cines
@@ -10,6 +13,8 @@
 
 class CINEFILEHEADER {
  public:
+  CINEFILEHEADER(std::ifstream *input); 
+
   WORD getType() {return Type;}
   WORD getHeadersize() {return Headersize; }
   WORD getCompression() {return Compression;}
@@ -23,7 +28,7 @@ class CINEFILEHEADER {
   DWORD getOffImageOffsets() {return OffImageOffsets;}
   TIME64 getTriggerTime() {return TriggerTime;}
 
-  void readCineFileHeader(char * data); 
+
 
  private:
   WORD Type; // must be "CI"
@@ -39,6 +44,13 @@ class CINEFILEHEADER {
   DWORD OffImageOffsets; //offset in the cinef ile of an array with the positions of each image
   TIME64 TriggerTime; // Trigger Time
   
+};
+
+class exceptionNotCine : public std::exception {
+  virtual const char * what() const throw() 
+  {
+    return "File is not a CINE file";
+  } 
 };
 
 #endif

@@ -1,8 +1,10 @@
 #include "data.h"
 #include "bitreader.h"
+#include "cinefileheader.h"
 #include <iostream>
 #include <fstream>
 #include <assert.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -46,15 +48,43 @@ int main() {
   
   m_byte = br.readBYTE(); assert(m_byte == 84); 
   m_char = br.readCHAR(); assert(m_char == 104); 
-  m_word = bt.readWORD(); assert(m_word == 29545);
+  m_word = br.readWORD(); assert(m_word == 29545);
   m_int16 = br.readINT16(); assert(m_int16 == 26912);
   m_short = br.readSHORT(); assert(m_short == 8307);
-  m_bool = br.readBool(); 
+  m_bool = br.readBOOL(); assert(m_bool == 1768038497);
+  m_dword = br.readDWORD(); assert(m_dword == 2037539182);
+  m_uint = br.readUINT(); assert(m_uint == 1818846752);
+  m_long = br.readLONG(); assert(m_long == 1752440933);
+  m_int = br.readINT(); assert(m_int == 1746957409);
+  m_float = br.readFLOAT(); assert(abs(m_float-1.849871e+20) < 1e-6);
+  m_double = br.readDOUBLE(); assert(abs(m_double-2.139469e+161)<1e-6);
+  
+  // Verify that we read structures correctly
+  TIME64 m_time64 =   br.readTIME64();
+  WBGAIN m_wbgain = br.readWBGAIN();
+  IMFILTER m_imfilter = br.readIMFILTER();
+
+  assert(m_time64.Fractions == 543517794);
+  assert(m_time64.Seconds == 1229148993);
+
+  assert(abs(m_wbgain.R-1.772777e+28) < 1e-6);
+  assert(abs(m_wbgain.B - 1.726007e+25) < 1e-6);
+
+
+  assert(m_imfilter.Dim == 539912046);
+  assert(m_imfilter.Shifts == 1746957385);
+  assert(m_imfilter.Bias == 1864397665);
+
 
   cout << "All data input tests passed." << endl;
+  cout << "Note that we haven't verified the sign of any variables yet" << endl;
+  input.close();
 
-
-
+  //Test actual cine file
+  ifstream inputCine("/home/nwadhwa/Downloads/pipeOrgan04_200FPS.cine", ios::in|ios::binary);
+  CINEFILEHEADER cineheader(&inputCine);
+  
+  
 
 
 
