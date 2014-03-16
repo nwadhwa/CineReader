@@ -19,18 +19,18 @@ typedef std::string STRING;
 
 class TIME64 {
  public:
-  DWORD fractions; // Fractions of second, divide by 2^32 to convert to seconds
-  DWORD seconds; // Seconds since Jan 1, 1970
+  DWORD Fractions; // Fractions of second, divide by 2^32 to convert to seconds
+  DWORD Seconds; // Seconds since Jan 1, 1970
 
   TIME64();
 };
 
 class IMFILTER { //structure to define a convolution filter
  public:
-  INT dim; //square kernel dimension
-  INT shifts; //not sure about this one
-  INT bias; // or this one
-  INT coef[25]; //coefficinets of kernel
+  INT Dim; //square kernel dimension
+  INT Shifts; //not sure about this one
+  INT Bias; // or this one
+  INT Coef[25]; //coefficinets of kernel
 
   IMFILTER();
 };
