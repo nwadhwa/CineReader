@@ -22,7 +22,7 @@ class TIME64 {
   DWORD Fractions; // Fractions of second, divide by 2^32 to convert to seconds
   DWORD Seconds; // Seconds since Jan 1, 1970
 
-  TIME64();
+  TIME64() {}
 };
 
 class IMFILTER { //structure to define a convolution filter
@@ -32,10 +32,11 @@ class IMFILTER { //structure to define a convolution filter
   INT Bias; // or this one
   INT Coef[25]; //coefficinets of kernel
 
-  IMFILTER();
+  IMFILTER() {}
 };
 
 class WBGAIN {
+ public:
   FLOAT R; //gain correction for red
   FLOAT B; //gain correction for blue
 };
