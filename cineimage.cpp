@@ -64,6 +64,12 @@ CINEIMAGE::~CINEIMAGE() {
 
 }
 
+
+
+
+
+
+/*
 void CINEIMAGE::saveToTIFF(char *filename) {
   TIFF *out = TIFFOpen(filename, "w");
   LONG w = bmh->getbiWidth();
@@ -113,3 +119,4 @@ void CINEIMAGE::saveToTIFF(char *filename) {
     _TIFFfree(buf);
 
 }
+*/

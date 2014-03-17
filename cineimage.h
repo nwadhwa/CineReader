@@ -15,8 +15,10 @@ class CINEIMAGE {
   CINEIMAGE(std::ifstream *input, long long imagePointer, const BITMAPINFOHEADER & bitmapheader);
   ~CINEIMAGE();
 
-  void saveToTIFF(char *filename);
-  
+  bool bit16() {return is16bit; }
+  //void saveToTIFF(char *filename);
+  BYTE* get8IM() { return im8;}
+  WORD* get16IM() {return im16;}
 
  private:
   const BITMAPINFOHEADER *bmh;

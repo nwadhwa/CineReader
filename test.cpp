@@ -94,11 +94,13 @@ int main() {
 
   IMAGEOFFSETS pimage(&inputCine, cineheader);
   CINEIMAGE im(&inputCine, pimage.getPointer(1000), bitmapheader);
-  im.saveToTIFF("spice.tiff");
+  //  im.saveToTIFF("spice.tiff");
 
   CineReader cr("/home/nwadhwa/Downloads/Untitled Folder/MembraneTexture.cine");
   CINEIMAGE im2 = cr.read(100);
-  im.saveToTIFF("spice2.tiff");
+  //  im2.saveToTIFF("spice3.tiff");
+  BYTE *s = im2.get8IM();
+  cout << (int) s[388*400+59] << endl;
   
 
 
