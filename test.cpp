@@ -3,6 +3,8 @@
 #include "cinefileheader.h"
 #include "bitmapinfoheader.h"
 #include "imageoffsets.h"
+#include "cinereader.h"
+#include "cineimage.h"
 #include <iostream>
 #include <fstream>
 #include <assert.h>
@@ -83,7 +85,7 @@ int main() {
   input.close();
 
   //Test actual cine file
-  ifstream inputCine("/home/nwadhwa/Downloads/pipeOrgan04_200FPS.cine", ios::in|ios::binary);
+  ifstream inputCine("/home/nwadhwa/Downloads/Untitled Folder/MembraneTexture.cine", ios::in|ios::binary);
   CINEFILEHEADER cineheader(&inputCine);
   cout << cineheader;
 
@@ -91,10 +93,13 @@ int main() {
   cout << bitmapheader;
 
   IMAGEOFFSETS pimage(&inputCine, cineheader);
+  CINEIMAGE im(&inputCine, pimage.getPointer(1000), bitmapheader);
+  im.saveToTIFF("spice.tiff");
 
-
-
-
+  CineReader cr("/home/nwadhwa/Downloads/Untitled Folder/MembraneTexture.cine");
+  CINEIMAGE im2 = cr.read(100);
+  im.saveToTIFF("spice2.tiff");
+  
 
 
 }

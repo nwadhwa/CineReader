@@ -1,5 +1,5 @@
 #ifndef __bitmapinfoheader_h
-#define __bigmapinfoheader_h
+#define __bitmapinfoheader_h
 
 #include "data.h"
 #include "bitreader.h"

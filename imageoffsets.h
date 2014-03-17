@@ -10,7 +10,7 @@
 class IMAGEOFFSETS {
  public:
   IMAGEOFFSETS(std::ifstream *input, const CINEFILEHEADER & header);
-  ~IMAGEOFFSETS() {delete pImage;}
+  ~IMAGEOFFSETS() {delete[] pImage;}
   
   long long getPointer(int imageNo);
 
