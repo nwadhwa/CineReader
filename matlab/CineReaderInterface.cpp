@@ -73,9 +73,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         int w = cr_instance->width();
         
         if (im.bit16()) {
-            plhs[0] = mxCreateNumericMatrix(h, w, mxUINT16_CLASS, mxREAL);
+            plhs[0] = mxCreateNumericMatrix(w, h, mxUINT16_CLASS, mxREAL);
             uint16_T *output = (uint16_T *)mxGetData(plhs[0]);
-            memcpy(output, im.get8IM(), sizeof(uint8_T)*h*w);
+            memcpy(output, im.get16IM(), sizeof(uint16_T)*h*w);
         } else {            
             plhs[0] = mxCreateNumericMatrix(w, h, mxUINT8_CLASS, mxREAL);
             uint8_T *output = (uint8_T *)mxGetData(plhs[0]);             

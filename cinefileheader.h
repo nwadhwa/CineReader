@@ -58,4 +58,11 @@ class exceptionNotCine : public std::exception {
   } 
 };
 
+class exceptionCineWrongVersion : public std::exception {
+  virtual const char * what() const throw() 
+  {
+    return "File is not a version 1 CINE file";
+  } 
+};
+
 #endif
