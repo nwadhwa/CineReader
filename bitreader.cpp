@@ -110,6 +110,7 @@ STRING bitreader::readZeroTerminatedSTRING() {
 
 STRING bitreader::readLengthNSTRING(int N) {
   STRING out = "";
+  char c = 1;
   for (int k = 0; k < N; k++) {
     c = input->get();
     out.append(1,c);
