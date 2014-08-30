@@ -23,12 +23,15 @@ cinefileheader.o: cinefileheader.cpp cinefileheader.h data.h
 bitreader.o: bitreader.cpp bitreader.h data.h
 	$(CC) $(LIBS) -c bitreader.cpp 
 
+setup.o: setup.cpp setup.h data.h
+	$(CC) $(LIBS) -c setup.cpp 
 
 
-all: cinereader.o cineimage.o imageoffsets.o bitmapinfoheader.o cinefileheader.o bitreader.o
 
-test: test.cpp data.h bitreader.o cinefileheader.o bitmapinfoheader.o imageoffsets.o cineimage.o cinereader.o
-	$(CC) imageoffsets.o bitreader.o cinefileheader.o bitmapinfoheader.o cineimage.o cinereader.o test.cpp -o test $(LIBS)
+all: cinereader.o cineimage.o imageoffsets.o bitmapinfoheader.o cinefileheader.o bitreader.o setup.o
+
+test: test.cpp data.h bitreader.o cinefileheader.o bitmapinfoheader.o imageoffsets.o cineimage.o cinereader.o setup.o
+	$(CC) imageoffsets.o bitreader.o cinefileheader.o bitmapinfoheader.o cineimage.o cinereader.o setup.o test.cpp -o test $(LIBS)
 
 
 run: test

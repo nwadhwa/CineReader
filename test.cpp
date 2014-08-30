@@ -5,6 +5,7 @@
 #include "imageoffsets.h"
 #include "cinereader.h"
 #include "cineimage.h"
+#include "setup.h"
 #include <iostream>
 #include <fstream>
 #include <assert.h>
@@ -88,12 +89,15 @@ int main() {
   ifstream inputCine("/home/nwadhwa/Downloads/drumhead_20140613.cine", ios::in|ios::binary);
   CINEFILEHEADER cineheader(&inputCine);
   cout << cineheader;
-
+  /*
   BITMAPINFOHEADER bitmapheader(&inputCine, cineheader);
   cout << bitmapheader;
 
   IMAGEOFFSETS pimage(&inputCine, cineheader);
   CINEIMAGE im(&inputCine, pimage.getPointer(1000), bitmapheader);
+  */
+  SETUP  setup(&inputCine, cineheader);
+  cout << setup;
   //  im.saveToTIFF("spice.tiff");
 
 
