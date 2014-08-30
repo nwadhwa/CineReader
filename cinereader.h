@@ -16,6 +16,10 @@ class CineReader {
   DWORD NumberOfFrames();
   LONG width();
   LONG height();
+  INT FrameRate();
+  WBGAIN whiteBalance();
+  INT gamma();
+  UINT exposure(); //in Nanonseconds
 
   
  private:
@@ -29,5 +33,10 @@ class CineReader {
   
   
 };
-
+class exceptionCannotOpenFile : public std::exception {
+  virtual const char * what() const throw() 
+  {
+    return "Cannot open file.";
+  } 
+};
 #endif

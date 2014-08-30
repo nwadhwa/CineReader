@@ -3,6 +3,9 @@
 
 CineReader::CineReader(char *filename) {
   inputCine = new std::ifstream(filename, std::ios::in|std::ios::binary);
+  if (!inputCine) {
+    throw exceptionCannotOpenFile();
+  }
   cineheader = new CINEFILEHEADER(inputCine);
   bitmapheader = new BITMAPINFOHEADER(inputCine, *cineheader);
   pimage = new IMAGEOFFSETS(inputCine, *cineheader);
@@ -36,3 +39,5 @@ CineReader::~CineReader() {
   
 
 }
+
+
