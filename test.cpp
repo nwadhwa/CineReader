@@ -85,7 +85,7 @@ int main() {
   input.close();
 
   //Test actual cine file
-  ifstream inputCine("/home/nwadhwa/Downloads/Untitled Folder/MembraneTexture.cine", ios::in|ios::binary);
+  ifstream inputCine("/home/nwadhwa/Downloads/drumhead_20140613.cine", ios::in|ios::binary);
   CINEFILEHEADER cineheader(&inputCine);
   cout << cineheader;
 
@@ -96,11 +96,15 @@ int main() {
   CINEIMAGE im(&inputCine, pimage.getPointer(1000), bitmapheader);
   //  im.saveToTIFF("spice.tiff");
 
-  CineReader cr("/home/nwadhwa/Downloads/Untitled Folder/MembraneTexture.cine");
-  CINEIMAGE im2 = cr.read(100);
-  //  im2.saveToTIFF("spice3.tiff");
-  BYTE *s = im2.get8IM();
-  cout << (int) s[388*400+59] << endl;
+
+  // String test
+  ifstream inputStr("/home/nwadhwa/Downloads/drumhead_20140613.cine", ios::in|ios::binary);
+  br = bitreader(&inputStr);
+  STRING out = br.readZeroTerminatedSTRING();
+  assert(out.compare("CI,"));
+  cout << "All string tests passed" << endl;
+
+
   
 
 

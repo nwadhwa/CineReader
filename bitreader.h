@@ -27,7 +27,7 @@ class bitreader {
   IMFILTER readIMFILTER();
   WBGAIN readWBGAIN();
   long long readint64();
-  //  STRING readSTRING();
+  STRING readZeroTerminatedSTRING();
   
  private:
   std::ifstream *input;

@@ -98,10 +98,21 @@ WBGAIN bitreader::readWBGAIN() {
   return out;
 }
 
+STRING bitreader::readZeroTerminatedSTRING() {
+  STRING out = "";
+  char c = 1;
+  while( c != 0) {
+    c = input->get();
+    out.append(1, c);
+  }
+  return out;
+}
 
 void bitreader::seekToByte(long g) {
   input->seekg(g);
 }
+
+
 
 
 
