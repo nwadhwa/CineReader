@@ -33,5 +33,6 @@ class bitreader {
  private:
   std::ifstream *input;
 
+
 };
 #endif
