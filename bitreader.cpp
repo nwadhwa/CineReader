@@ -108,6 +108,15 @@ STRING bitreader::readZeroTerminatedSTRING() {
   return out;
 }
 
+STRING bitreader::readLengthNSTRING(int N) {
+  STRING out = "";
+  for (int k = 0; k < N; k++) {
+    c = input->get();
+    out.append(1,c);
+  }
+  return out;
+}
+
 void bitreader::seekToByte(long g) {
   input->seekg(g);
 }
