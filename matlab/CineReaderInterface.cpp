@@ -1,4 +1,4 @@
-#include "../cinereader.h"
+#include "../src/cinereader.h"
 #include "class_handle.hpp"
 #include <iostream>
 #include <stdio.h>
