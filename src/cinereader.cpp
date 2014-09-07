@@ -8,7 +8,9 @@ CineReader::CineReader(char *filename) {
   }
   cineheader = new CINEFILEHEADER(inputCine);
   bitmapheader = new BITMAPINFOHEADER(inputCine, *cineheader);
+  setup = new SETUP(inputCine, *cineheader);
   pimage = new IMAGEOFFSETS(inputCine, *cineheader);
+
 }
 
 CINEIMAGE CineReader::read(int frame) {
@@ -28,6 +30,32 @@ LONG CineReader::width() {
 
 LONG CineReader::height() {
   return bitmapheader->getbiHeight();
+}
+
+UINT CineReader::FrameRate() {
+  return setup->getFrameRate();
+  
+  
+}
+
+FLOAT CineReader::whiteBalanceRed() {
+  return setup->getWBGain(0).R;
+}
+
+FLOAT CineReader::whiteBalanceBlue() { 
+  return setup->getWBGain(0).B;
+}
+
+INT CineReader::gamma() {
+  return setup->getGamma();
+}
+
+UINT CineReader::exposure() {
+  return setup->getShutter();
+}
+
+UINT CineReader::colorFilterArrayPattern() {
+  return setup->getCFA();
 }
 
 CineReader::~CineReader() {

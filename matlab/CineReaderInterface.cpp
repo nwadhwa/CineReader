@@ -63,6 +63,74 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         output[0] = n;
         return;    
     } 
+    
+    if(!strcmp("FrameRate", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("FrameRate: Unexpected arguments.");
+        int n = cr_instance->FrameRate();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    
+    if(!strcmp("WBR", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("WhiteBalanceRedGain: Unexpected arguments.");
+        int n = cr_instance->whiteBalanceRed();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    if(!strcmp("WBB", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("WhiteBalanceBlueGain: Unexpected arguments.");
+        int n = cr_instance->whiteBalanceBlue();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    
+    if(!strcmp("Gamma", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("Gamma: Unexpected arguments.");
+        int n = cr_instance->gamma();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    
+    if(!strcmp("Exposure", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("Exposure: Unexpected arguments.");
+        int n = cr_instance->exposure();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    if(!strcmp("CFA", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("Color Filter Array: Unexpected arguments.");
+        int n = cr_instance->colorFilterArrayPattern();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    
+    
+    
+    
     if(!strcmp("read", cmd)) {
         if (nlhs < 0 || nrhs < 2)
             mexErrMsgTxt("read: Unexpected arguments.");

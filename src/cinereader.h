@@ -6,6 +6,7 @@
 #include "data.h"
 #include "imageoffsets.h"
 #include "cineimage.h"
+#include "setup.h"
 #include <fstream>
 
 class CineReader {
@@ -16,16 +17,20 @@ class CineReader {
   DWORD NumberOfFrames();
   LONG width();
   LONG height();
-  INT FrameRate();
-  WBGAIN whiteBalance();
+  UINT FrameRate();
+  
+  FLOAT whiteBalanceRed();
+  FLOAT whiteBalanceBlue();
   INT gamma();
   UINT exposure(); //in Nanonseconds
 
-  
+  UINT colorFilterArrayPattern(); 
+
  private:
   std::ifstream *inputCine;
   CINEFILEHEADER *cineheader;
   BITMAPINFOHEADER *bitmapheader;
+  SETUP *setup;
   IMAGEOFFSETS *pimage;
 
 
