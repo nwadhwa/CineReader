@@ -46,8 +46,30 @@ FLOAT CineReader::whiteBalanceBlue() {
   return setup->getWBGain(0).B;
 }
 
+
+INT CineReader::brightness() {
+  return setup->getBright();
+}
+
+INT CineReader::contrast() {
+  return setup->getContrast();
+}
+
+
 INT CineReader::gamma() {
   return setup->getGamma();
+}
+
+BOOL CineReader::flipH() {
+  return setup->getbFlipH();
+}
+
+BOOL CineReader::flipV() {
+  return setup->getbFlipV();
+}
+
+INT CineReader::rotate() {
+  return setup->getRotate();
 }
 
 UINT CineReader::exposure() {

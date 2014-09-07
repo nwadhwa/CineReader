@@ -21,7 +21,15 @@ class CineReader {
   
   FLOAT whiteBalanceRed();
   FLOAT whiteBalanceBlue();
+  
+  INT brightness();  
+  INT contrast();  
   INT gamma();
+
+  BOOL flipH();
+  BOOL flipV();
+  INT rotate();  
+
   UINT exposure(); //in Nanonseconds
 
   UINT colorFilterArrayPattern(); 

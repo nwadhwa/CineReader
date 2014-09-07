@@ -95,6 +95,27 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         return;    
     } 
     
+        
+    if(!strcmp("Bright", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("Bright: Unexpected arguments.");
+        int n = cr_instance->brightness();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    if(!strcmp("Contrast", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("Contrast: Unexpected arguments.");
+        int n = cr_instance->contrast();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
     
     if(!strcmp("Gamma", cmd)) {
         if (nlhs < 0 || nrhs < 2)
@@ -106,6 +127,35 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         return;    
     } 
     
+    if(!strcmp("flipH", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("flipH: Unexpected arguments.");
+        int n = cr_instance->flipH();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    if(!strcmp("flipV", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("flipV: Unexpected arguments.");
+        int n = cr_instance->flipV();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
+    if(!strcmp("rotate", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("rotate: Unexpected arguments.");
+        int n = cr_instance->rotate();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
     
     if(!strcmp("Exposure", cmd)) {
         if (nlhs < 0 || nrhs < 2)
