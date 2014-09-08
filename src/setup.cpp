@@ -220,6 +220,5 @@ std::ostream& operator<<(std::ostream& os, const SETUP & setupheader) {
   os << "Frame Delay (ns): " << setupheader.getFrameDelayNs() << std::endl;
   os << "Description: " << setupheader.getDescription() << std::endl;
 
-
-  
+  return os;
 }

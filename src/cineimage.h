@@ -1,7 +1,6 @@
 #ifndef __cineimage_h
 #define __cineimage_h
 
-#include <tiffio.h>
 #include "data.h"
 #include "bitreader.h"
 #include "bitmapinfoheader.h"
