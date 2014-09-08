@@ -19,16 +19,15 @@ classdef CineReader < CineReaderRaw
            % Demosaic
            im = demosaic(im, this.CFA);
            
-           % Color correction                                 
-           im = im.^(1/this.Gamma); % Gamma
+           % Color correction                                            
            im = im*this.Gain; % Gain
            im = im + 2.55*this.Brightness;% Brightness
+           im = im2uint8(im2double(im).^(1/this.Gamma)); % Gamma, replace with look up table
            
            % White Balance
-           im = rgb2ycbcr(im);
-           im(:,:,2) = im(:,:,2).*this.WhiteBalanceBlueGain;
-           im(:,:,3) = im(:,:,3).*this.WhiteBalanceRedGain;
-           im = ycbcr2rgb(im);
+           im(:,:,1) = im(:,:,1).*this.WhiteBalanceRedGain;
+           im(:,:,3) = im(:,:,3).*this.WhiteBalanceBlueGain;
+           
            
            % Flip /rotate
            if (this.flipH)
