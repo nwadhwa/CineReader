@@ -26,13 +26,17 @@ classdef CineReader < CineReaderRaw
            
            % Color correction                                                       
            im = im*this.Gain; % Gain
-           im = im + 0.255*this.Brightness;% Brightness
-           im = im2uint8(im2single(im).^(1/this.Gamma)); % Gamma, replace with look up table
-           
            
            % White Balance
            im(:,:,1) = im(:,:,1).*this.WhiteBalanceRedGain;
            im(:,:,3) = im(:,:,3).*this.WhiteBalanceBlueGain;
+           
+           % Brightness
+           im = im + 0.255*this.Brightness;% Brightness
+           
+           % Gamma
+           im = im2uint8(im2single(im).^(1/this.Gamma)); % Gamma, replace with look up table
+                      
            
            
            % Flip /rotate
