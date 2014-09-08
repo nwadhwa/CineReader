@@ -140,7 +140,7 @@ SETUP::SETUP(std::ifstream *inputCine, const CINEFILEHEADER &cineheader) {
   FilterTime = br.readDWORD();
   LongReady = br.readBOOL();
   ShutterOff = br.readBOOL();
-  for (int k = 0; k < 4; k++)
+  for (int k = 0; k < 16; k++)
       Res4[k] = br.readBYTE();
   bMetaWB = br.readBOOL();
   Hue = br.readDWORD();

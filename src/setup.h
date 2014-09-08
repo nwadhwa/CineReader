@@ -262,7 +262,7 @@ class SETUP {
   DWORD FilterTime;
   BOOL LongReady;
   BOOL ShutterOff;  
-  BYTE Res4[4];
+  BYTE Res4[16];
   BOOL bMetaWB;
   DWORD Hue;
   INT BlackLevel;
