@@ -69,7 +69,7 @@ classdef CineReaderRaw < handle
             CineReaderInterface('delete', this.objectHandle);
         end
 
-        function im = fliptrans(this, im)
+        function im = postprocess(this, im)
             im = flipud(im');
         end
         
@@ -82,24 +82,24 @@ classdef CineReaderRaw < handle
                     if (or(frameRange <1, frameRange > this.NumberOfFrames))
                         error('Invalid value of frame range.');
                     end
-                    im = this.fliptrans(CineReaderInterface('read', this.objectHandle, frameRange-1));
+                    im = this.postprocess(CineReaderInterface('read', this.objectHandle, frameRange-1));
                 elseif (numel(frameRange) == 2)                
                     if (frameRange(2) <= frameRange(1))
                         error('Second element of frame range must be larger than first.\n');
                     end
-                    temp = this.fliptrans(CineReaderInterface('read', this.objectHandle, frameRange(1)));
+                    temp = this.postprocess(CineReaderInterface('read', this.objectHandle, frameRange(1)));
                     im = zeros(this.height, this.width, 1, frameRange(2)-frameRange(1)+1,class(temp));
                     for k = frameRange(1):frameRange(2)
-                        im(:,:,1,k) = this.fliptrans(CineReaderInterface('read', this.objectHandle, k-1));
+                        im(:,:,1,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1));
                     end                                                                       
                 else 
                     error('Argument must be a single number or a two element array\n');
                 end
             else
-               temp = this.fliptrans(CineReaderInterface('read', this.objectHandle, 0));
+               temp = this.postprocess(CineReaderInterface('read', this.objectHandle, 0));
                im = zeros(this.height, this.width, 1, this.NumberOfFrames,class(temp));
                for k = 1:this.NumberOfFrames
-                  im(:,:,1,k) = this.fliptrans(CineReaderInterface('read', this.objectHandle, k-1)); 
+                  im(:,:,1,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1)); 
                end
                
             end
