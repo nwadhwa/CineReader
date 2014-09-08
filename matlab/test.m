@@ -5,7 +5,7 @@ compile
 %% Test
 clear;
 pause(0.2);
-rootDir = '/home/nwadhwa/Downloads/';
+rootDir = '~/Downloads/';
 cines = {'drum_flipH.cine', 'drum_flipV.cine', 'drum_rotateClock.cine', 'flipV_rotateCounter.cine'};
 
 for k = 1:numel(cines)
