@@ -10,6 +10,7 @@ CineReader::CineReader(char *filename) {
   bitmapheader = new BITMAPINFOHEADER(inputCine, *cineheader);
   setup = new SETUP(inputCine, *cineheader);
   pimage = new IMAGEOFFSETS(inputCine, *cineheader);
+  
 
 }
 

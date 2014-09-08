@@ -114,7 +114,31 @@ class SETUP {
   UINT getImHeightAcq() const { return ImHeightAcq; }
   STRING getDescription() const { return Description; }
 
-
+  BOOL getRisingEdge() const { return RisingEdge; }
+  DWORD getFilterTime() const { return FilterTime; } 
+  BOOL getLongReady() const { return LongReady;}
+  BOOL getShutterOff() const { return ShutterOff;  }  
+  BOOL getbMetaWB() const { return bMetaWB;}
+  DWORD getHue() const { return Hue;}
+  INT getBlackLevel() const { return BlackLevel;}
+  INT getWhiteLevel() const { return WhiteLevel;}
+  STRING getLensDescription() const { return LensDescription;}
+  FLOAT getLensAperture() const { return LensAperture;}
+  FLOAT getLensFocusDistance() const { return LensFocusDistance;}
+  FLOAT getLensFocalLength() const { return LensFocalLength;}
+  FLOAT getfOffset() const { return fOffset;}
+  FLOAT getfGain() const { return fGain;}
+  FLOAT getfSaturation() const { return fSaturation;}
+  FLOAT getfHue() const { return fHue;}
+  FLOAT getfGamma() const { return fGamma;}
+  FLOAT getfGammaR() const { return fGammaR;}
+  FLOAT getfGammaB() const { return fGammaB;}
+  FLOAT getfFlare() const { return fFlare;}
+  FLOAT getfPedestalR() const { return fPedestalR;}
+  FLOAT getfPedestalG() const { return fPedestalG;}
+  FLOAT getfPedestalB() const { return fPedestalB;}
+  FLOAT getfChroma() const { return fChroma;}
+  
  private:
   // Obsolete variables that are no longer used
   /*
@@ -233,7 +257,52 @@ class SETUP {
   UINT ImHeightAcq;
   STRING Description;
 
- 
+  // Cine 705 format
+  BOOL RisingEdge;
+  DWORD FilterTime;
+  BOOL LongReady;
+  BOOL ShutterOff;  
+  BYTE Res4[4];
+  BOOL bMetaWB;
+  DWORD Hue;
+  INT BlackLevel;
+  INT WhiteLevel;
+  STRING LensDescription;
+  FLOAT LensAperture;
+  FLOAT LensFocusDistance;
+  FLOAT LensFocalLength;
+  FLOAT fOffset;
+  FLOAT fGain;
+  FLOAT fSaturation;
+  FLOAT fHue;
+  FLOAT fGamma;
+  FLOAT fGammaR;
+  FLOAT fGammaB;
+  FLOAT fFlare;
+  FLOAT fPedestalR;
+  FLOAT fPedestalG;
+  FLOAT fPedestalB;
+  FLOAT fChroma;
+  // Skipping following fields 
+  STRING ToneLabel;
+  INT TonePoints;
+  FLOAT fTone[64];
+  STRING UserMatrixLabel;
+  BOOL EnableMatrices;
+  FLOAT fUserMatrix[9];
+  BOOL EnableCrop;
+  WORD CropRect[4];
+  BOOL EnableResample;
+  DWORD ResampleWidth;
+  DWORD ResampleHeight;
+  FLOAT fGain16_8;
+  DWORD FRPShape[16];
+  // Skipping  remaining fields
+  // TrigTC
+  // fPbRate
+  // fTcRate
+  // CineName[256]
+  
 
 
 

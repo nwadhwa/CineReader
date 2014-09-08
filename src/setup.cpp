@@ -135,7 +135,33 @@ SETUP::SETUP(std::ifstream *inputCine, const CINEFILEHEADER &cineheader) {
   ImPosYAcq = br.readUINT();
   ImWidthAcq = br.readUINT();
   ImHeightAcq = br.readUINT();
-  Description = br.readLengthNSTRING(4096);                
+  Description = br.readLengthNSTRING(4096);  
+  RisingEdge = br.readBOOL();
+  FilterTime = br.readDWORD();
+  LongReady = br.readBOOL();
+  ShutterOff = br.readBOOL();
+  for (int k = 0; k < 4; k++)
+      Res4[k] = br.readBYTE();
+  bMetaWB = br.readBOOL();
+  Hue = br.readDWORD();
+  BlackLevel = br.readINT();
+  WhiteLevel = br.readINT();
+  LensDescription = br.readLengthNSTRING(256);
+  LensAperture = br.readFLOAT();
+  LensFocusDistance = br.readFLOAT();
+  LensFocalLength = br.readFLOAT();
+  fOffset = br.readFLOAT();
+  fGain = br.readFLOAT();
+  fSaturation = br.readFLOAT();
+  fHue = br.readFLOAT();
+  fGamma = br.readFLOAT();
+  fGammaR = br.readFLOAT();
+  fGammaB = br.readFLOAT();
+  fFlare = br.readFLOAT();
+  fPedestalR = br.readFLOAT();
+  fPedestalG = br.readFLOAT();
+  fPedestalB = br.readFLOAT();
+  fChroma = br.readFLOAT();
 }
 
 // Prints out all non obsolete values
@@ -219,6 +245,29 @@ std::ostream& operator<<(std::ostream& os, const SETUP & setupheader) {
   os << "EDR Shutter (ns): " << setupheader.getEDRShutterNs() << std::endl;
   os << "Frame Delay (ns): " << setupheader.getFrameDelayNs() << std::endl;
   os << "Description: " << setupheader.getDescription() << std::endl;
-
+  os << "Rising Edge: " <<  setupheader.getRisingEdge() << std::endl;
+  os << "Filter Time: " <<  setupheader.getFilterTime() << std::endl;
+  os << "Long Ready: " << setupheader.getLongReady() << std::endl;
+  os << "Shutter Off: " << setupheader.getShutterOff()   << std::endl;  
+  os << "Meta White Balance: " << setupheader.getbMetaWB() << std::endl;
+  os << "Hue: " << setupheader.getHue() << std::endl;
+  os << "Black Level: " << setupheader.getBlackLevel() << std::endl;
+  os << "White Level: " << setupheader.getWhiteLevel() << std::endl;
+  os << "Lens Description: " << setupheader.getLensDescription() << std::endl;
+  os << "Lens Aperture: " << setupheader.getLensAperture() << std::endl;
+  os << "Lens Focus Distance: " << setupheader.getLensFocusDistance() << std::endl;
+  os << "Lens Focal Length: " << setupheader.getLensFocalLength() << std::endl;
+  os << "Offset: " << setupheader.getfOffset() << std::endl;
+  os << "Gain: "<< setupheader.getfGain() << std::endl;
+  os << "Saturation: " << setupheader.getfSaturation() << std::endl;
+  os << "Hue: " << setupheader.getfHue() << std::endl;
+  os << "Gamma: " << setupheader.getfGamma() << std::endl;
+  os << "Gamma Red: " << setupheader.getfGammaR() << std::endl;
+  os << "Gamma Blue: " << setupheader.getfGammaB() << std::endl;
+  os << "Flare: " << setupheader.getfFlare() << std::endl;
+  os << "Pedestal Red: " << setupheader.getfPedestalR() << std::endl;
+  os << "Pedestal Green: " << setupheader.getfPedestalG() << std::endl;
+  os << "Pedestal Blue: " << setupheader.getfPedestalB() << std::endl;
+  os << "Chroma: " << setupheader.getfChroma() << std::endl;
   return os;
 }
