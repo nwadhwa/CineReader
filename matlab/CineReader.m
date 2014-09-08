@@ -5,13 +5,18 @@ classdef CineReader < CineReaderRaw
     %   Detailed explanation goes here
     
     properties        
-
+        gammaLUT;
     end
     
     
     methods
         function this = CineReader(filename)
-            this@CineReaderRaw(filename);            
+            this@CineReaderRaw(filename);    
+            if (this.rotate ~= 0 )
+               swapVar = this.height;
+               this.height = this.width;
+               this.width = swapVar;
+            end
         end
 
         function im = postprocess(this, im)
@@ -22,7 +27,7 @@ classdef CineReader < CineReaderRaw
            % Color correction                                            
            im = im*this.Gain; % Gain
            im = im + 2.55*this.Brightness;% Brightness
-           im = im2uint8(im2double(im).^(1/this.Gamma)); % Gamma, replace with look up table
+           im = im2uint8(im2single(im).^(1/this.Gamma)); % Gamma, replace with look up table
            
            % White Balance
            im(:,:,1) = im(:,:,1).*this.WhiteBalanceRedGain;
@@ -30,7 +35,7 @@ classdef CineReader < CineReaderRaw
            
            
            % Flip /rotate
-           if (this.flipH)
+           if (xor(this.flipH, this.rotate > 0))
                im = fliplr(im);
            end
            
@@ -41,7 +46,8 @@ classdef CineReader < CineReaderRaw
               temp = zeros(size(im,2),size(im,1),size(im,3),class(im));
               for c = 1:size(im,3)
                  temp(:,:, c) = im(:,:,c)';
-              end                          
+              end  
+              im = temp;
            end
            
            
