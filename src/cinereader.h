@@ -24,7 +24,8 @@ class CineReader {
   
   INT brightness();  
   INT contrast();  
-  INT gamma();
+  FLOAT gain();
+  FLOAT gamma();
 
   BOOL flipH();
   BOOL flipV();

@@ -12,6 +12,7 @@ classdef CineReaderRaw < handle
         WhiteBalanceBlueGain;
         Brightness;
         Contrast;
+        Gain;
         Gamma;
         
         flipH;
@@ -41,6 +42,7 @@ classdef CineReaderRaw < handle
             this.WhiteBalanceBlueGain = CineReaderInterface('WBB', this.objectHandle);
             this.Brightness = CineReaderInterface('Bright', this.objectHandle);
             this.Contrast = CineReaderInterface('Contrast', this.objectHandle);
+            this.Gain = CineReaderInterface('Gain', this.objectHandle);            
             this.Gamma = CineReaderInterface('Gamma', this.objectHandle);
             
             this.flipH = CineReaderInterface('flipH', this.objectHandle);

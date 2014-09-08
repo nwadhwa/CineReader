@@ -78,7 +78,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     if(!strcmp("WBR", cmd)) {
         if (nlhs < 0 || nrhs < 2)
             mexErrMsgTxt("WhiteBalanceRedGain: Unexpected arguments.");
-        int n = cr_instance->whiteBalanceRed();
+        float n = cr_instance->whiteBalanceRed();
         plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
         double *output = mxGetPr(plhs[0]);
         output[0] = n;
@@ -88,7 +88,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     if(!strcmp("WBB", cmd)) {
         if (nlhs < 0 || nrhs < 2)
             mexErrMsgTxt("WhiteBalanceBlueGain: Unexpected arguments.");
-        int n = cr_instance->whiteBalanceBlue();
+        float n = cr_instance->whiteBalanceBlue();
         plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
         double *output = mxGetPr(plhs[0]);
         output[0] = n;
@@ -117,10 +117,20 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     } 
     
     
+    if(!strcmp("Gain", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("Gain: Unexpected arguments.");
+        float n = cr_instance->gain();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    } 
+    
     if(!strcmp("Gamma", cmd)) {
         if (nlhs < 0 || nrhs < 2)
             mexErrMsgTxt("Gamma: Unexpected arguments.");
-        int n = cr_instance->gamma();
+        float n = cr_instance->gamma();
         plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
         double *output = mxGetPr(plhs[0]);
         output[0] = n;

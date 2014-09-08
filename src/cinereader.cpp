@@ -56,9 +56,12 @@ INT CineReader::contrast() {
   return setup->getContrast();
 }
 
+FLOAT CineReader::gain() {
+  return setup->getfGain();
+}
 
-INT CineReader::gamma() {
-  return setup->getGamma();
+FLOAT CineReader::gamma() {
+  return setup->getfGamma();
 }
 
 BOOL CineReader::flipH() {
