@@ -11,7 +11,11 @@ cines = {'testCineWBTest.cine'};
 for k = 1:numel(cines)
     spice = CineReader(fullfile(rootDir, cines{k}));
     spice
-    im = spice.read(1);
+    profile on
+    for j = 1:10
+        im = spice.read(1);
+    end
+    profile viewer
     figure();
     imshow(im)
     

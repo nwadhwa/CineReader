@@ -6,6 +6,8 @@ classdef CineReader < CineReaderRaw
     
     properties        
         gammaLUT;
+        maxVal;
+        
     end
     
     
@@ -16,6 +18,17 @@ classdef CineReader < CineReaderRaw
                swapVar = this.height;
                this.height = this.width;
                this.width = swapVar;
+            end
+            this.maxVal = 255; % Replace for non 8 bit image files                        
+            tempIm = CineReaderInterface('read', this.objectHandle, 0);
+            if (isa(tempIm, 'uint8'))
+                this.gammaLUT = (0:255)/this.maxVal;
+                this.gammaLUT = this.gammaLUT.^(1/this.Gamma);
+                this.gammaLUT = im2uint8(this.gammaLUT);
+            else
+                this.gammaLUT = (0:65536)/this.maxVal;
+                this.gammaLUT = this.gammaLUT.^(1/this.Gamma);
+                this.gammaLUT = im2uint16(this.gammaLUT);
             end
         end
 
@@ -35,7 +48,8 @@ classdef CineReader < CineReaderRaw
            im = im + 0.255*this.Brightness;% Brightness
            
            % Gamma
-           im = im2uint8(im2single(im).^(1/this.Gamma)); % Gamma, replace with look up table
+           % im = im2uint8(im2single(im).^(1/this.Gamma)); % Gamma
+           im = intlut(im, this.gammaLUT); %LUT implementaion
                       
            
            
@@ -48,7 +62,7 @@ classdef CineReader < CineReaderRaw
                im = flipud(im);
            end
            if (abs(this.rotate) == 90)
-              temp = zeros(size(im,2),size(im,1),size(im,3),class(im));
+              temp = zeros(size(im,2),size(im,1),size(im,3), 'like', im);
               for c = 1:size(im,3)
                  temp(:,:, c) = im(:,:,c)';
               end  
