@@ -88,7 +88,7 @@ classdef CineReaderRaw < handle
                         error('Second element of frame range must be larger than first.\n');
                     end
                     temp = this.postprocess(CineReaderInterface('read', this.objectHandle, frameRange(1)));
-                    im = zeros(this.height, this.width, 1, frameRange(2)-frameRange(1)+1,class(temp));
+                    im = zeros(this.height, this.width, size(temp,3), frameRange(2)-frameRange(1)+1,class(temp));
                     for k = frameRange(1):frameRange(2)
                         im(:,:,1,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1));
                     end                                                                       
@@ -97,7 +97,7 @@ classdef CineReaderRaw < handle
                 end
             else
                temp = this.postprocess(CineReaderInterface('read', this.objectHandle, 0));
-               im = zeros(this.height, this.width, 1, this.NumberOfFrames,class(temp));
+               im = zeros(this.height, this.width, size(temp,3), this.NumberOfFrames,class(temp));
                for k = 1:this.NumberOfFrames
                   im(:,:,1,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1)); 
                end

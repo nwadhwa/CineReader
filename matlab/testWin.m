@@ -12,6 +12,10 @@ for k = 1:numel(cines)
     spice = CineReader(fullfile(rootDir, cines{k}));
     spice
 end
-im = spice.read(1);
+profile on
+for k = 1:10
+    im = spice.read(1);
+end
+profile viewer
 imshow(im)
 %% reverse order
