@@ -30,6 +30,8 @@ class CineReader {
   BOOL flipH();
   BOOL flipV();
   INT rotate();  
+  
+  UINT bitsPerPixel();
 
   UINT exposure(); //in Nanonseconds
 

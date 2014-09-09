@@ -19,14 +19,17 @@ classdef CineReader < CineReaderRaw
                this.height = this.width;
                this.width = swapVar;
             end
-            this.maxVal = 255; % Replace for non 8 bit image files                        
+            this.maxVal = 2.^this.BitsPerPixel-1; % Replace for non 8 bit image files                        
             tempIm = CineReaderInterface('read', this.objectHandle, 0);
             if (isa(tempIm, 'uint8'))
                 this.gammaLUT = (0:255)/this.maxVal;
                 this.gammaLUT = this.gammaLUT.^(1/this.Gamma);
                 this.gammaLUT = im2uint8(this.gammaLUT);
             else
-                this.gammaLUT = (0:65536)/this.maxVal;
+                % For images with < 16 BPP, this look up table maps the max
+                % value (pure white) to 65535. This means that imshow will
+                % work properly and not need to be scaled.
+                this.gammaLUT = (0:65535)/this.maxVal;
                 this.gammaLUT = this.gammaLUT.^(1/this.Gamma);
                 this.gammaLUT = im2uint16(this.gammaLUT);
             end

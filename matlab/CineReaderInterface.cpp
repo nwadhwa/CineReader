@@ -95,7 +95,16 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         return;    
     } 
     
-        
+    if(!strcmp("BPP", cmd)) {
+        if (nlhs < 0 || nrhs < 2)
+            mexErrMsgTxt("Bits Per Pixel: Unexpected arguments.");
+        float n = cr_instance->bitsPerPixel();
+        plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+        double *output = mxGetPr(plhs[0]);
+        output[0] = n;
+        return;    
+    }  
+    
     if(!strcmp("Bright", cmd)) {
         if (nlhs < 0 || nrhs < 2)
             mexErrMsgTxt("Bright: Unexpected arguments.");

@@ -47,6 +47,9 @@ FLOAT CineReader::whiteBalanceBlue() {
   return setup->getWBGain(0).B;
 }
 
+UINT CineReader::bitsPerPixel() {
+    return setup->getRealBPP();
+}
 
 INT CineReader::brightness() {
   return setup->getBright();

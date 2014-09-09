@@ -18,6 +18,8 @@ classdef CineReaderRaw < handle
         flipV;
         rotate;
         
+        BitsPerPixel;
+        
         Exposure;
         CFA;
     end
@@ -47,6 +49,7 @@ classdef CineReaderRaw < handle
             this.flipV = CineReaderInterface('flipV', this.objectHandle);
             this.rotate = CineReaderInterface('rotate', this.objectHandle);
             
+            this.BitsPerPixel = CineReaderInterface('BPP', this.objectHandle);
             
             this.Exposure = CineReaderInterface('Exposure', this.objectHandle);
             this.getCFAPatternString();

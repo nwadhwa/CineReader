@@ -16,7 +16,7 @@ using namespace std;
 int main() {
   
   //Test actual cine file
-  ifstream inputCine("C:\\Users\\wadhwa\\Downloads\\testCineG10.cine", ios::in|ios::binary);
+  ifstream inputCine("C:\\Users\\wadhwa\\Desktop\\test01_4_87Hz_damageBall.cine", ios::in|ios::binary);
   CINEFILEHEADER cineheader(&inputCine);
   cout << cineheader;
   /*

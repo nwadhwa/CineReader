@@ -5,9 +5,9 @@ compile
 %% Test
 clear;
 pause(0.2);
-rootDir = 'C:\Users\wadhwa\Downloads';
+rootDir = 'C:\Users\wadhwa\Desktop';
 %cines = {'testCineC.cine', 'testCine_flipHC.cine', 'testCine_flipVC.cine', 'testCine_flipHVC.cine'};
-cines = {'testCineWBTest.cine'};
+cines = {'test01_4_87Hz_damageBall.cine'};
 for k = 1:numel(cines)
     spice = CineReader(fullfile(rootDir, cines{k}));
     spice
