@@ -93,7 +93,7 @@ classdef CineReaderRaw < handle
                     temp = this.postprocess(CineReaderInterface('read', this.objectHandle, frameRange(1)));
                     im = zeros(this.height, this.width, size(temp,3), frameRange(2)-frameRange(1)+1,class(temp));
                     for k = frameRange(1):frameRange(2)
-                        im(:,:,1,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1));
+                        im(:,:,:,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1));
                     end                                                                       
                 else 
                     error('Argument must be a single number or a two element array\n');
@@ -102,7 +102,7 @@ classdef CineReaderRaw < handle
                temp = this.postprocess(CineReaderInterface('read', this.objectHandle, 0));
                im = zeros(this.height, this.width, size(temp,3), this.NumberOfFrames,class(temp));
                for k = 1:this.NumberOfFrames
-                  im(:,:,1,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1)); 
+                  im(:,:,:,k) = this.postprocess(CineReaderInterface('read', this.objectHandle, k-1)); 
                end
                
             end
