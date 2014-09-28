@@ -97,9 +97,9 @@ DOUBLE bitreader::readDOUBLE() {
     std::cout << input->tellg() << std::endl;
   return out;
 }
-long long bitreader::readint64() {
-  long long out;
-  input->read((char *) &out, sizeof(long long));
+int64_t bitreader::readint64() {
+  int64_t out;
+  input->read((char *) &out, sizeof(int64_t));
   return out;
 }
 

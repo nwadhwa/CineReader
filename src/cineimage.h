@@ -8,7 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <string.h>
-#include <cstdint>
+#include <stdint.h>
 
 class CINEIMAGE {
  public:

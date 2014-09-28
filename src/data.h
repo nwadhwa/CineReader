@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <cstdint>
+#include <stdint.h>
 
 typedef uint8_t BYTE;
 typedef signed char CHAR;
