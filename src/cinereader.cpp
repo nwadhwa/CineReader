@@ -14,7 +14,7 @@ CineReader::CineReader(char *filename) {
 
 }
 
-CINEIMAGE CineReader::read(int frame) {
+CINEIMAGE CineReader::read(int64_t frame) {
   CINEIMAGE im(inputCine, pimage->getPointer(frame), *bitmapheader);
   return im;
 }

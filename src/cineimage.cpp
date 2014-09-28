@@ -1,6 +1,6 @@
 #include "cineimage.h"
 
-CINEIMAGE::CINEIMAGE(std::ifstream *input, long long imagePointer, const BITMAPINFOHEADER & bitmapheader) {
+CINEIMAGE::CINEIMAGE(std::ifstream *input, int64_t imagePointer, const BITMAPINFOHEADER & bitmapheader) {
   int k;
   bitreader br(input);
   br.seekToByte(imagePointer);

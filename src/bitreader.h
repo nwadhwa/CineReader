@@ -9,7 +9,7 @@ class bitreader {
   bitreader(std::ifstream *in) { input = in; }
   ~bitreader() {}
 
-  void seekToByte(long long g);
+  void seekToByte(int64_t g);
 
   BYTE  readBYTE();  
   CHAR  readCHAR();
@@ -26,7 +26,7 @@ class bitreader {
   TIME64 readTIME64();
   IMFILTER readIMFILTER();
   WBGAIN readWBGAIN();
-  long long readint64();
+  int64_t readint64();
   STRING readZeroTerminatedSTRING();
   STRING readLengthNSTRING(int N);
   

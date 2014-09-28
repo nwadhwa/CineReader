@@ -8,10 +8,11 @@
 #include <fstream>
 #include <iostream>
 #include <string.h>
+#include <cstdint>
 
 class CINEIMAGE {
  public:
-  CINEIMAGE(std::ifstream *input, long long imagePointer, const BITMAPINFOHEADER & bitmapheader);
+  CINEIMAGE(std::ifstream *input, int64_t imagePointer, const BITMAPINFOHEADER & bitmapheader);
   ~CINEIMAGE();
 
   bool bit16() {return is16bit; }
@@ -25,7 +26,7 @@ class CINEIMAGE {
   BYTE *Annotation;
   DWORD ImageSize;
   bool is16bit;
-  int samplesPerPixel;
+  int32_t samplesPerPixel;
   BYTE *im8;
   WORD *im16;
 };

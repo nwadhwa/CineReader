@@ -13,7 +13,7 @@ class CineReader {
  public:
   CineReader(char * filename);
   ~CineReader();
-  CINEIMAGE read(int frame);
+  CINEIMAGE read(int64_t frame);
   DWORD NumberOfFrames();
   LONG width();
   LONG height();
