@@ -9,7 +9,7 @@ class bitreader {
   bitreader(std::ifstream *in) { input = in; }
   ~bitreader() {}
 
-  void seekToByte(long g);
+  void seekToByte(long long g);
 
   BYTE  readBYTE();  
   CHAR  readCHAR();

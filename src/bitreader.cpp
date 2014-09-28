@@ -152,7 +152,7 @@ STRING bitreader::readLengthNSTRING(int N) {
   return out;
 }
 
-void bitreader::seekToByte(long g) {
+void bitreader::seekToByte(long long g) {
   input->seekg(g);
 }
 
