@@ -22,6 +22,7 @@ classdef CineReaderRaw < handle
         
         Exposure;
         CFA;
+        Name;
     end
   
     
@@ -53,6 +54,8 @@ classdef CineReaderRaw < handle
             
             this.Exposure = CineReaderInterface('Exposure', this.objectHandle);
             this.getCFAPatternString();
+            [~, vidName, ext] = fileparts(filename);           
+            this.Name = [vidName ext];
         end
         
         function getCFAPatternString(this)
