@@ -19,7 +19,11 @@ classdef CineReader < CineReaderRaw
                this.height = this.width;
                this.width = swapVar;
             end
-            this.maxVal = 2.^this.BitsPerPixel-1; % Replace for non 8 bit image files                        
+            this.maxVal = 2.^this.BitsPerPixel-1; % Replace for non 8 bit image files                                 
+            this.computeLUT();
+        end
+        
+        function this = computeLUT(this)
             tempIm = CineReaderInterface('read', this.objectHandle, 0);
             if (isa(tempIm, 'uint8'))
                 this.gammaLUT = (0:255)/this.maxVal;
@@ -34,6 +38,7 @@ classdef CineReader < CineReaderRaw
                 this.gammaLUT = im2uint16(this.gammaLUT);
             end
         end
+        
 
         function im = postprocess(this, im)
            im = flipud(im');
