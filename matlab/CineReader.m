@@ -58,11 +58,21 @@ classdef CineReader < CineReaderRaw
            
            % Flip /rotate
            if (xor(this.flipH, this.rotate > 0))
-               im = fliplr(im);
+              temp = zeros(size(im,1),size(im,2),size(im,3), 'like', im);
+              for c = 1:size(im,3)
+                 temp(:,:, c) = fliplr(im(:,:,c));
+              end  
+              im = temp;               
            end
            
            if (xor(this.flipV, this.rotate < 0))
-               im = flipud(im);
+              temp = zeros(size(im,1),size(im,2),size(im,3), 'like', im);
+              for c = 1:size(im,3)
+                 temp(:,:, c) = flipud(im(:,:,c));
+              end  
+              im = temp;
+               
+               
            end
            if (abs(this.rotate) == 90)
               temp = zeros(size(im,2),size(im,1),size(im,3), 'like', im);

@@ -22,6 +22,7 @@ classdef CineReaderRaw < handle
         
         Exposure;
         CFA;
+        
         Name;
     end
   
