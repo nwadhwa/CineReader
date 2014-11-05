@@ -11,7 +11,13 @@ BYTE bitreader::readBYTE()
   return out;
 }
 
-
+BYTE *bitreader::readBYTEArray(int number) {
+    BYTE *out = new BYTE[number];
+    input->read((char *) out, sizeof(BYTE)*number);
+    if (debug)
+      std::cout << input->tellg() << std::endl;
+    return out;
+}
 
 CHAR  bitreader::readCHAR() {
   CHAR out;
@@ -25,6 +31,14 @@ WORD  bitreader::readWORD() {
   WORD out;
   input->read((char *) &out, sizeof(WORD));
   if (debug) 
+    std::cout << input->tellg() << std::endl;
+  return out;
+}
+
+WORD * bitreader::readWORDArray(int number) {
+  WORD *out = new WORD[number];
+  input->read((char *) out, sizeof(WORD)*number);
+  if (debug)
     std::cout << input->tellg() << std::endl;
   return out;
 }

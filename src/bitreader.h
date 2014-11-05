@@ -12,8 +12,10 @@ class bitreader {
   void seekToByte(int64_t g);
 
   BYTE  readBYTE();  
+  BYTE *readBYTEArray(int number);
   CHAR  readCHAR();
   WORD  readWORD();
+  WORD *readWORDArray(int number);
   INT16 readINT16();
   SHORT  readSHORT();
   BOOL  readBOOL();

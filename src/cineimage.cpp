@@ -27,20 +27,13 @@ CINEIMAGE::CINEIMAGE(std::ifstream *input, int64_t imagePointer, const BITMAPINF
     if (bitmapheader.getbiBitCount() == 16 || bitmapheader.getbiBitCount() == 48) {
       is16bit = true;
       im8 = NULL;
-      im16 = new WORD[totalPixels]; 
+      im16 = br.readWORDArray(totalPixels);
     } else {
       is16bit = false;
-      im8 = new BYTE[totalPixels];
+      im8 = br.readBYTEArray(totalPixels);
       im16 = NULL;
     }
   
-    for (k = 0; k < totalPixels; k++) {
-      if(is16bit) {
-	im16[k] = br.readWORD();
-      } else {
-	im8[k] = br.readBYTE();
-      }
-    }
   } else {
     im8 = NULL;
     im16 = NULL;
